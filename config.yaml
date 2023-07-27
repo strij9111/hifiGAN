@@ -10,7 +10,7 @@ train:
   discriminator_train_start_steps: 10000
   postnet_start_steps: 5000
   num_workers: 1
-  batch_size: 16
+  batch_size: 8
   optimizer: 'adam'
   adamG:
     lr: 0.001

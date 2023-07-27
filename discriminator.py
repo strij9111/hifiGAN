@@ -143,6 +143,12 @@ def feature_loss(fmap_r, fmap_g):
     loss = 0
     for dr, dg in zip(fmap_r, fmap_g):
         for rl, gl in zip(dr, dg):
+            # Находим минимальную длину последнего измерения
+            min_shape = min(rl.size(-1), gl.size(-1))
+
+            # Обрезаем каждый тензор по минимальному размеру последнего измерения
+            rl = rl[..., :min_shape]
+            gl = gl[..., :min_shape]
             loss += torch.mean(torch.abs(rl - gl))
 
     return loss*2

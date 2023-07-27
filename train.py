@@ -181,6 +181,7 @@ def train(rank, args, hp, hp_str):
             if steps > hp.train.discriminator_train_start_steps:
                 y_df_hat_r, y_df_hat_g, fmap_f_r, fmap_f_g = specd(y_mel_loss, y_g_hat_mel)
                 y_ds_hat_r, y_ds_hat_g, fmap_s_r, fmap_s_g = msd(y, y_g_hat)
+                
                 loss_fm_f = feature_loss(fmap_f_r, fmap_f_g)
                 loss_fm_s = feature_loss(fmap_s_r, fmap_s_g)
                 loss_gen_f, losses_gen_f = generator_loss(y_df_hat_g)
